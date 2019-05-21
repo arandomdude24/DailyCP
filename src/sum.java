@@ -8,20 +8,10 @@
 
 public class sum {
     public static boolean isSum(int[] lst, int sum) {
-        int indFirst = 0;
-        int indSecond = 0;
-        int first = lst[0];
-        int second = lst[1];
-
-        while (indFirst < lst.length-1) {
-            if (first+second == sum)
-                return true;
-            else if (indSecond < lst.length-1) {
-                indSecond++;
-                second = lst[indSecond];
-            } else {
-                indFirst++;
-                first = lst[indFirst];
+        for (int x=0; x<lst.length; x++) {
+            for (int y=x+1; y<lst.length; y++) {
+                if (lst[x]+lst[y] == sum)
+                    return true;
             }
         }
         return false;
@@ -32,5 +22,6 @@ public class sum {
 
         System.out.println(isSum(test, 17)); //Should return true
         System.out.println(isSum(test, 100)); //Should return false
+        System.out.println(isSum(test, 18)); //Should return true
     }
 }
