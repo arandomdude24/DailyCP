@@ -1,7 +1,7 @@
-package XORLL;
+package integerDecoder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class XORLLTest {
+class intDecoderTest {
 
 }
