@@ -32,7 +32,11 @@ public class UnivalTree<E> {
         }
     }
 
-    private Node<E> root;
+    public Node<E> root;
+
+    public UnivalTree() {
+        root = null;
+    }
 
     public UnivalTree(E data) {
         root = new Node<E>(data);
@@ -42,16 +46,25 @@ public class UnivalTree<E> {
         root = new Node<E>(data, left.root, right.root);
     }
 
-    public int univalTree(Node<E> lr) {
+    private boolean isUnival(Node<E> lr) {
         if (lr == null)
-            return 0;
-        else if (lr.left == null && lr.right == null)
-            return 1;
-        else
-            return univalTree(lr, lr.data);
+            return true;
+        System.out.println(root.data);
+        System.out.println(lr.data);
+        if (root.data == lr.data)
+            return isUnival(lr.left) && isUnival(lr.right);
+        return false;
     }
 
-    private int univalTree(Node<E> lr, E prev) {
-        return 0;
+    public int univalSubTree(Node<E> lr) {
+        if (lr == null)
+            return 0;
+        int left = univalSubTree(lr.left);
+        int right = univalSubTree(lr.right);
+        System.out.println(isUnival(lr));
+        if (isUnival(lr))
+            return 1 + left + right;
+        return left + right;
+
     }
 }
